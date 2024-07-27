@@ -1,0 +1,5 @@
+/venv
+.env
+myapp.egg-info/
+*.pyc
+__pycache__/
