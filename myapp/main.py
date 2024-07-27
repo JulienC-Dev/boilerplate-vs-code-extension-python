@@ -1,36 +1,27 @@
 import json
 import os
+import argparse
 
-class Account():
-  def __init__(self, montant, max_position):
-    self.montant = montant
-    self.position = 0
-    self.max_position = max_position
-  
-  def __str__(self):
-    return f'Account: {self.montant} - position: {self.position} - max_position: {self.max_position}'
-  
-  def get_montant(self):
-    return self.montant
-  
-  def add_position(self, montant):
-    self.position += 1
-    self.montant -= montant
-
-  def get_position(self):
-    return self.position
-  
-  def is_max_position(self):
-    return self.position >= self.max_position
-
-def dump_json(content:dict):
+def dump_json(content:dict)->None:
     path = os.path.join(os.getcwd(), 'account.json')
     with open(path, 'w') as f:
         json.dump(content, f)
+    return None
+
+def load_json(path:str)->dict:
+    path = os.path.join(os.getcwd(), 'update_account.json')
+    with open(path, 'r') as f:
+        return json.load(f)
+
+def get_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-u','--update', type=str, help='file update account', required=True)
+    return parser.parse_args()
 
 def main()->int:
-  a = Account(1000, 3)
-  dump_json(a.__dict__)
+  args = get_args()
+  update_account = load_json(args.update)
+  dump_json(update_account)
   return 0
 
 if __name__ == '__main__':
