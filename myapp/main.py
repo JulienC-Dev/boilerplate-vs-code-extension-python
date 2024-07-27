@@ -1,15 +1,18 @@
+"""
+root : account
+myapp -p update_account.json
+"""
+
 import json
 import os
 import argparse
 
-def dump_json(content:dict)->None:
-    path = os.path.join(os.getcwd(), 'account/account.json')
+def dump_json(content:dict, path)->None:
     with open(path, 'w') as f:
         json.dump(content, f)
     return None
 
 def load_json(path:str)->dict:
-    path = os.path.join(os.getcwd(), 'account/update_account.json')
     with open(path, 'r') as f:
         return json.load(f)
 
@@ -27,7 +30,8 @@ def main()->int:
     print('File not found')
     return 1
   update_account = load_json(args.path)
-  dump_json(update_account)
+  dump_json(update_account, args.path)
+  print("Account updated successfully")
   return 0
 
 if __name__ == '__main__':

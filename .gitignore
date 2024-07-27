@@ -3,3 +3,6 @@
 myapp.egg-info/
 *.pyc
 __pycache__/
+
+# node modules
+node_modules/
