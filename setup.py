@@ -6,16 +6,16 @@ setup(
     description='A brief description of my app',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    author='Your Name',
+    author='JulienC-Dev',
     author_email='your.email@example.com',
-    url='https://github.com/yourusername/my-app',
-    packages=find_packages(),  # Automatically find packages
+    url='https://github.com/JulienC-Dev/vs-code-extension',
+    packages=find_packages(),  
     install_requires=[
         # List your dependencies here
     ],
     entry_points={
         'console_scripts': [
-            'myapp=myapp.main:main',  # Entry point definition
+            'myapp=myapp.main:main',
         ],
     },
     classifiers=[
